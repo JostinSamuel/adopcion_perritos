@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "8d9353d6-9103-42db-8af5-9f91914e9303",
+		"name": "PERRITOS_ADOPCION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PERRITO",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Firulais\",\r\n    \"edad\": 3,\r\n    \"tamanio\": \"MEDIANO\",\r\n    \"raza\": \"Labrador\",\r\n    \"descripcion\": \"Firulais es un perrito muy amigable y juguetón, ideal para una familia.\",\r\n    \"imagenes\": [\"https://ejemplo.com/imagen1.jpg\", \"https://ejemplo.com/imagen2.jpg\"],\r\n    \"ubicacion\": \"Lima\",\r\n    \"estado\": \"DISPONIBLE\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9998/perritos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"perritos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIO",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3N0aW5AZ21haWwuY29tIiwiaWF0IjoxNzMxMDg0MjgyLCJleHAiOjE3MzExNzA2ODJ9.Wzn2mYg5HEFtOPrnE8KQK1Ax02o5UPrf2keLj_Sk2dI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\": \"jostin@gmail.com\",\r\n    \"nombre\": \"Jostin Martinez Alvarez\",\r\n    \"rol\": \"USUARIO\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9998/usuarios/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"usuarios",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USUARIO",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3N0aW5AZ21haWwuY29tIiwiaWF0IjoxNzMxMDg0MjgyLCJleHAiOjE3MzExNzA2ODJ9.Wzn2mYg5HEFtOPrnE8KQK1Ax02o5UPrf2keLj_Sk2dI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9998/usuarios/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADOPCION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9998/adopciones/registrar?usuarioId=1&perritoId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"adopciones",
+						"registrar"
+					],
+					"query": [
+						{
+							"key": "usuarioId",
+							"value": "1"
+						},
+						{
+							"key": "perritoId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ADOPCIONES",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3N0aW5AZ21haWwuY29tIiwiaWF0IjoxNzMxMDg0MjgyLCJleHAiOjE3MzExNzA2ODJ9.Wzn2mYg5HEFtOPrnE8KQK1Ax02o5UPrf2keLj_Sk2dI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9998/adopciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"adopciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT ESTADO ADOPCION",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9998/adopciones/1/estado?nuevoEstado=CONFIRMADO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"adopciones",
+						"1",
+						"estado"
+					],
+					"query": [
+						{
+							"key": "nuevoEstado",
+							"value": "CONFIRMADO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGNUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"jostin@gmail.com\",\r\n    \"password\":\"123456789\",\r\n    \"fullName\":\"Jostin Martinez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9998/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"jostin@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9998/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9998",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
