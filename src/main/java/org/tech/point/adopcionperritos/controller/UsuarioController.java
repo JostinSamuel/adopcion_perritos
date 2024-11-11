@@ -42,21 +42,6 @@ public class UsuarioController {
         return ResponseEntity.ok(users);
     }
 
-    @PutMapping("/registrar")
-    public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario usuario) {
-        Usuario existingUsuario = usuarioRepository.findByCorreo(usuario.getCorreo()).orElse(null);
-
-        if (existingUsuario != null) {
-            existingUsuario.setRol(usuario.getRol());
-            existingUsuario.setUpdatedAt(LocalDateTime.now());
-            existingUsuario.setNombre(usuario.getNombre());
-            usuarioRepository.save(existingUsuario);
-            return ResponseEntity.ok(existingUsuario);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
-
     @GetMapping("/{id}")
     public Usuario obtenerUsuario(@PathVariable Long id) {
         return usuarioRepository.findById(id).orElseThrow();

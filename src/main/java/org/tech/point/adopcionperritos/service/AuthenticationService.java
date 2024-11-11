@@ -36,6 +36,7 @@ public class AuthenticationService {
         user.setNombre(input.getFullName());
         user.setCorreo(input.getEmail());
         user.setPassword(passwordEncoder.encode(input.getPassword()));
+        user.setRol(Usuario.Rol.USUARIO);
         user.setCreatedAt(input.getCreatedAt());
 
         return usuarioRepository.save(user);

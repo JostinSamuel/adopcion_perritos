@@ -10,5 +10,6 @@ public class RegisterUserDto {
     private String password;
     private String fullName;
     private LocalDateTime createdAt;
+    private String role;
 
 }

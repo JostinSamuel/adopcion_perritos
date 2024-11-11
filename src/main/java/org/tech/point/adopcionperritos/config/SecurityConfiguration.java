@@ -34,7 +34,12 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/adopciones/**").hasAnyRole("USUARIO", "ADMINISTRADOR")
+                        .requestMatchers("/perritos/**").hasAnyRole("USUARIO", "ADMINISTRADOR")
+                        .requestMatchers("/usuarios/**").hasAnyRole("USUARIO", "ADMINISTRADOR")
+                        .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
                         .anyRequest().authenticated())
+
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
@@ -42,7 +47,6 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
